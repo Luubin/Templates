@@ -1,0 +1,22 @@
+File systems for discovery	
+1	?	^(btrfs|ext2|ext3|ext4|jfs|reiser|xfs|ffs|ufs|jfs|jfs2|vxfs|hfs|ntfs|fat32|zfs)$	[结果为真]
+
+Filter file system name	
+1	?	.*kubelet*	[结果为假]
+2	?	.*docker*	[结果为假]
+
+
+	Network interfaces for discovery	
+1	?	^lo$	[结果为假]
+2	?	^Software Loopback Interface	[结果为假]
+3	?	^(veth|wea)	[结果为假]
+
+
+	Partition regex	
+1	?	^(sd[a-z]|sddlma[a-z]|mpath[a-z]|vd[a-z]|dm-[0-9])$|xvd[a-z]$	[结果为真]
+
+
+	Storage devices for SNMP discovery	
+1	?	^(Physical memory|Virtual memory|Memory buffers|Cached memory|Swap space)$	[结果为假]
+
+
