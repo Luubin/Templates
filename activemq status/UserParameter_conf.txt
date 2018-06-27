@@ -1,0 +1,3 @@
+#################### AMQ #####################
+UserParameter=activemq.discovery,/usr/local/zabbix/bin/activemq_discovery.sh
+UserParameter=activemq.status[*],/usr/local/zabbix/bin/activemq_status.sh  $1 $2
