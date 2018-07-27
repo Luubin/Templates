@@ -1,0 +1,6 @@
+########## JVM ##########
+UserParameter=java.jmx.discovery,/usr/local/zabbix/bin/jmx_discovery.sh jmx_port_discovery
+UserParameter=java.HeapMemoryUsage.status[*],/usr/bin/java -jar /usr/local/zabbix/bin/cmdline-jmxclient-0.10.3.jar - 127.0.0.1:$1 java.lang:type=Memory HeapMemoryUsage 2>&1|grep $2|cut -d " " -f2
+UserParameter=java.NonHeapMemoryUsage.status[*],/usr/bin/java -jar /usr/local/zabbix/bin/cmdline-jmxclient-0.10.3.jar - 127.0.0.1:$1 java.lang:type=Memory NonHeapMemoryUsage 2>&1|grep $2|cut -d " " -f2
+UserParameter=java.LoadClass.status[*],/usr/bin/java -jar /usr/local/zabbix/bin/cmdline-jmxclient-0.10.3.jar - 127.0.0.1:$1 java.lang:type=ClassLoading $2 2>&1|cut -d " " -f6
+UserParameter=java.Threading.status[*],/usr/bin/java -jar /usr/local/zabbix/bin/cmdline-jmxclient-0.10.3.jar - 127.0.0.1:$1 java.lang:type=Threading $2 2>&1|cut -d " " -f6

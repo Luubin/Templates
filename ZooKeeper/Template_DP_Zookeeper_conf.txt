@@ -1,0 +1,8 @@
+#Template_DP_Zookeeper
+UserParameter=zk_sent,echo stat|nc 127.0.0.1 2181|grep Sent |awk -F ":" '{print $2}'
+UserParameter=zk_received,echo stat|nc 127.0.0.1 2181|grep Received |awk -F ":" '{print $2}'
+UserParameter=zk_mode,echo stat|nc 127.0.0.1 2181|grep Mode |awk -F ":" '{print $2}'
+UserParameter=zk_nodecount,echo stat|nc 127.0.0.1 2181|grep 'Node count' |awk -F ":" '{print $2}'
+UserParameter=zk_clientscount,echo cons|nc 127.0.0.1 2181 |grep -v '127.0.0.1'|wc -l
+UserParameter=zk_status,echo ruok| nc 127.0.0.1 2181
+UserParameter=zk_aclient,echo cons|nc 127.0.0.1 2181 |grep -v '127.0.0.1'|awk -F: '{print $1}'|awk -F/ '{print $2}' |head -n1

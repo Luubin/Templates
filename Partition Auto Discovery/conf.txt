@@ -1,0 +1,15 @@
+
+####################  Disk IO monitor  ####################
+UserParameter=custom.vfs.dev.read.ops[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$4}'
+UserParameter=custom.vfs.dev.read.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$7}'
+UserParameter=custom.vfs.dev.write.ops[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$8}'
+UserParameter=custom.vfs.dev.write.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$11}'
+UserParameter=custom.vfs.dev.io.active[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$12}'
+UserParameter=custom.vfs.dev.io.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$13}'
+UserParameter=custom.vfs.dev.read.sectors[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$6}'
+UserParameter=custom.vfs.dev.write.sectors[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$10}'
+
+##################### LLD ####################
+UserParameter=tcp_status[*],/usr/local/zabbix/bin/tcp_status.py $1 $2 $3
+UserParameter=zabbix_low_discovery[*],/bin/bash /usr/local/zabbix/bin/partition_low_discovery.sh $1
+UserParameter=discovery_tcp_port[*],/bin/bash /usr/local/zabbix/bin/discovery_tcp_port.sh $1

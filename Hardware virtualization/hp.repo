@@ -1,0 +1,37 @@
+[Base-wonhigh]
+name=CentOS-$releasever $basearch
+baseurl=http://10.240.1.35:7878/Centos-$releasever/Base/$basearch
+enable=1
+gpgcheck=0
+
+[Epel-wonhigh]
+name=CentOS-$releasever $basearch
+baseurl=http://10.240.1.35:7878/Centos-$releasever/Epel/$basearch
+enable=1
+gpgcheck=0
+
+[Rpmforge-wonhigh]
+name=CentOS-$releasever $basearch
+baseurl=http://10.240.1.35:7878/Centos-$releasever/Rpmforge/$basearch
+enable=1
+gpgcheck=0
+
+[wonhigh]
+name=CentOS-$releasever $basearch
+baseurl=http://10.240.1.35:7878/wonhigh/
+enable=1
+gpgcheck=0
+
+[HP-spp]
+name=HP Service Pack for ProLiant
+baseurl=http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7.2/x86_64/current/
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/GPG-KEY-ssp
+
+[HP-mcp]
+name=HP Management Component Pack for ProLiant
+baseurl=http://downloads.linux.hpe.com/SDR/repo/mcp/centos/7.2/x86_64/current/
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/GPG-KEY-mcp

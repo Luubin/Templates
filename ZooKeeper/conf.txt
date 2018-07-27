@@ -1,0 +1,3 @@
+[root@ZB-LSP-DUBBO-001 ~]# cat /usr/local/zabbix/etc/zabbix_agentd.conf.d/check_zookeeper.conf 
+UserParameter=zookeeper.status[*],/usr/bin/python /usr/local/zabbix/bin/check_zookeeper.py $1
+UserParameter=zookeeper.status_2182[*],/usr/bin/python /usr/local/zabbix/bin/check_zookeeper_2182.py $1

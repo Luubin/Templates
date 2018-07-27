@@ -1,0 +1,9 @@
+##################### redis ####################
+UserParameter=redis_stats[*],/usr/local/redis/redis-cli -h 127.0.0.1 -p $1 -a password info|grep $2|cut -d : -f2
+UserParameter=redis_salve,/usr/local/redis/redis-cli -p 6379 -a password info Replication |awk -F":" '$1=="master_link_status"{if($2~"up") {print 1} else {print 0}}'
+UserParameter=redis_use_memory,awk -v RedisUseMem=`/usr/local/redis/redis-cli -p 6379 -a password info memory |awk -F ":" '$1=="used_memory"{print $2}'` -v PhysicsMem=`awk '$1~/MemTotal/{print $2*1024*0.5}' /proc/meminfo` 'BEGIN{if(RedisUseMem<PhysicsMem){print 1} else {print 0}}'
+UserParameter=redis_active,/usr/local/redis/redis-cli -a password ping |grep -wq PONG && echo 0 || echo 1
+UserParameter=redis_master_status,/usr/local/redis/redis-cli -p 6379 -a password info Replication|awk -F":" '$1~/role/{if($2~/master/) {print 0} else {print 1} }'
+UserParameter=instantaneous_ops_per_sec,/usr/local/redis/redis-cli -p 6379 -a password info  |grep instantaneous_ops_per_sec|awk -F: '{print $2}'
+UserParameter=instantaneous_input_kbps,/usr/local/redis/redis-cli -p 6379 -a password info  |grep instantaneous_input_kbps|awk -F: '{print $2}'
+UserParameter=instantaneous_output_kbps,/usr/local/redis/redis-cli -p 6379 -a password info  |grep instantaneous_output_kbps|awk -F: '{print $2}'
